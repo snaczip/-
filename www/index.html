@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <script src="components/loader.js"></script>
+    <link rel="stylesheet" href="components/loader.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        var module = ons.bootstrap();
+        ons.disableAutoStatusBarFill();  // (Monaca enables StatusBar plugin by default)
+        
+    
+        document.addEventListener("deviceready", onDeviceReady, false);
+        function onDeviceReady() {
+            alert("Fileプラグインが利用できます。");
+            window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSystemSuccess, onFileSystemFail);
+        }
+    </script>
+    <script src="app.js"></script>
+</head>
+<body ng-controller="AppController">
+    <ons-navigator var="navi">
+                <ons-toolbar>
+                    <div class="center">学生証読み取り
+                    </div>
+                </ons-toolbar>
+                <div class="scanner-wrapper">
+                    <p class="scanner-label">学生証を読み取って新規会員登録を行いますます。</p>
+                    
+                    <div class="scanner-eye-catch">
+                        <ons-icon icon="fa-barcode" size="160px"></ons-icon>
+                    </div>
+                    <ons-button class="scanner-button" modifier="large--cta" ng-click="scan()">読み取る</ons-button>
+                </div>
+            
+    </ons-navigator>
+</body>
+</html>
